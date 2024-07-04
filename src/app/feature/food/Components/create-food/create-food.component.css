@@ -1,0 +1,35 @@
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+}
+
+.input-group-append {
+  margin-left: 0.5rem;
+}
+
+.btn-primary {
+  margin-top: 0.5rem;
+}
+
+.btn-danger {
+  margin-left: 0.5rem;
+}
+
+.btn-success {
+  margin-top: 1rem;
+}
+
+.im {
+  height: 50px;
+  width: 50px;
+}

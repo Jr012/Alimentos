@@ -1,0 +1,32 @@
+<!-- src/app/features/food/components/create-food/create-food.component.html -->
+<div class="container mt-5">
+    <h1>Crear Comida</h1>
+    <form>
+        <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input id="nombre" type="text" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="categoria">Categoría</label>
+            <input id="categoria" type="text" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Ingredientes</label>
+            <div class="input-group mt-2">
+                <input type="text" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="descripcion">paso a paso</label>
+            <textarea id="descripcion" class="form-control"></textarea>
+        </div>
+
+        <div >
+            <input type="file" class="d-none">
+            <img src="../../../../../assets/imagenno.jpeg" class="img-fluid" id="im" >
+        </div>
+
+        <button type="submit" class="btn btn-success mt-3">Guardar</button>
+        <div id="boton"><button type="submit" class="btn btn-success mt-3">Editar</button></div>
+    </form>
+</div>
