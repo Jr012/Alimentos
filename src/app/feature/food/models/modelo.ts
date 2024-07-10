@@ -1,18 +1,19 @@
-export class food {
-    id?: number;
-    nombre:string;
-    categoria:string;
-    imageUrl: string;
-    ingredientes: string[];
+// modelo.ts (or appropriate file)
+export interface Comida {
+  id: number;
+  cantidad: number;
+
+  comidaId: {
+    id: number;
+    nombre: string;
+    receta: string;
+    categoria: {
+      id: number;
+      descripcion: string;};
+  }
+  ingredienteId: {
+    id: number;
     descripcion: string;
-
-
-    constructor(nombre: string, categoria:string, imageUrl:string, ingredientes:string[], descripcion:string){
-        this.nombre = nombre;
-        this.categoria = categoria;
-        this.imageUrl = imageUrl; 
-        this.ingredientes =ingredientes;
-        this.descripcion = descripcion;
+    unidad_de_medidas: string;
+  };
 }
-}
-

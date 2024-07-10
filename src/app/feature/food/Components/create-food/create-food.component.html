@@ -1,32 +1,73 @@
-<!-- src/app/features/food/components/create-food/create-food.component.html -->
 <div class="container mt-5">
     <h1>Crear Comida</h1>
     <form>
+        <!-- Muestra el nombre de la comida -->
         <div class="form-group">
             <label for="nombre">Nombre</label>
-            <input id="nombre" type="text" class="form-control">
+            <input id="nombre" type="text" class="form-control" [(ngModel)]="nombreComida" name="nombreComida">
         </div>
+
         <div class="form-group">
-            <label for="categoria">Categoría</label>
-            <input id="categoria" type="text" class="form-control">
+            <label for="nombre">categorias</label>
+            <select id="categoria" class="form-control custom-select" aria-label="Default select example"
+                [(ngModel)]="categoriaSeleccionada" name="categoria">
+                <option *ngFor="let categoria of categorias" [value]="categoria.id">{{categoria.descripcion}}</option>
+            </select>
         </div>
+
+        <!-- Muestra la descripción de la receta -->
         <div class="form-group">
-            <label>Ingredientes</label>
-            <div class="input-group mt-2">
-                <input type="text" class="form-control">
+            <label for="descripcion">Paso a Paso</label>
+            <textarea id="descripcion" class="form-control" [(ngModel)]="recetaComida" name="recetaComida"></textarea>
+        </div>
+
+
+        <div class="form-group">
+            <label>Ingredientes Seleccionados</label>
+            <ul class="list-group">
+                <li *ngFor="let ingredienteSeleccionado of ingredientesSeleccionados; let i = index"
+                    class="list-group-item">
+                    {{ingredienteSeleccionado.ingrediente.descripcion}} - {{ingredienteSeleccionado.cantidad}}
+                    <button type="button" class="btn btn-danger btn-sm float-right"
+                        (click)="quitarIngrediente(i)">Quitar</button>
+                </li>
+            </ul>
+        </div>
+
+        <button type="button" class="btn btn-primary mt-3" (click)="abrirModal()">Agregar Ingredientes</button>
+        <!-- Botón para guardar o editar -->
+        <button type="button" class="btn btn-success mt-3" (click)="guardarComida()">Guardar</button>
+        <div id="boton">
+            <button type="submit" class="btn btn-success mt-3">Editar</button>
+        </div>
+    </form>
+
+    <!-- Modal -->
+    <div class="modal fade" id="ingredientesModal" tabindex="-1" aria-labelledby="ingredientesModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ingredientesModalLabel">Seleccionar Ingredientes</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div *ngFor="let ingrediente of ingredientes" class="input-group mt-2">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">{{ingrediente.descripcion}}</span>
+                        </div>
+                        <input type="number" class="form-control" placeholder="Cantidad"
+                            [(ngModel)]="ingredienteCantidad[ingrediente.id]">
+                        <div class="input-group-append">
+                            <button type="button" class="btn btn-primary"
+                                (click)="agregarIngrediente(ingrediente)">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
             </div>
         </div>
-        <div class="form-group">
-            <label for="descripcion">paso a paso</label>
-            <textarea id="descripcion" class="form-control"></textarea>
-        </div>
-
-        <div >
-            <input type="file" class="d-none">
-            <img src="../../../../../assets/imagenno.jpeg" class="img-fluid" id="im" >
-        </div>
-
-        <button type="submit" class="btn btn-success mt-3">Guardar</button>
-        <div id="boton"><button type="submit" class="btn btn-success mt-3">Editar</button></div>
-    </form>
+    </div>
 </div>

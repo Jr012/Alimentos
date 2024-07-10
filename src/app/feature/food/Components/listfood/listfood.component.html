@@ -1,2 +1,15 @@
-<h1>hola
-</h1>
+<div class="row">
+    <div class="col-md-4 p-4" *ngFor="let comida of comidas">
+      <div class="card">
+        <div class="card-header">
+          <p>{{ comida.nombre }}</p>
+        </div>
+        <div class="card-body">
+          <img src="../../../../../assets/comida.jpg" class="img-card-top w-100">
+          <p>{{ comida.categoria.descripcion }}</p>
+          <button type="button" class="btn btn-primary" (click)="mostrarDetalles(comida.id)">Mostrar Detalles</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

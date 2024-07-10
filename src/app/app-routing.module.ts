@@ -8,6 +8,7 @@ const routes: Routes = [
   },
   { path: '', redirectTo: '/food/foodlist', pathMatch: 'full' },
   { path: '', redirectTo: '/food/Createfood', pathMatch: 'full' },
+  { path: '', redirectTo: '/food/mostraComida', pathMatch: 'full' },
   { path: '**', redirectTo: '/food/foodlist' }
 ];
 

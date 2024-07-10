@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 
 // modulos
 import { SharedModule } from './feature/shared.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { SharedModule } from './feature/shared.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
