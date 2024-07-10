@@ -44,6 +44,7 @@ export class CreateFoodComponent {
               ingrediente: ingredienteComida.ingredienteId,
               cantidad: ingredienteComida.cantidad
             };
+            this.ingredientesSeleccionados.push(ingredienteSeleccionado);
           })
           console.log(this.comidas);
 
@@ -75,11 +76,18 @@ export class CreateFoodComponent {
   agregarIngrediente(ingrediente: ingrediente): void {
     const cantidad = Number(this.ingredienteCantidad[ingrediente.id]);
     if (!isNaN(cantidad) && cantidad > 0) {
-      const ingredienteSeleccionado: IngredienteSeleccionado = {
-        ingrediente: ingrediente,
-        cantidad: cantidad
-      };
-      this.ingredientesSeleccionados.push(ingredienteSeleccionado);
+      const ingredienteUpdate = this.ingredientesSeleccionados.find(ing => ing.ingrediente.id === ingrediente.id);
+      if (ingredienteUpdate) {
+        ingredienteUpdate.cantidad = cantidad;
+      } else {
+        const ingredienteSeleccionado: IngredienteSeleccionado = {
+          ingrediente: ingrediente,
+          cantidad: cantidad
+        };
+        this.ingredientesSeleccionados.push(ingredienteSeleccionado);
+      }
+    }else{
+      alert("Ingrese una cantidad")
     }
   }
 
@@ -113,9 +121,12 @@ export class CreateFoodComponent {
         this.nombreComida = "";
         this.categoriaSeleccionada = 0;
         this.ingredientesSeleccionados = [];
-        alert("comida creada");
+        
         if (this.id > 0) {
-          this.router.navigate(['/food/mostraComida', this.id])
+          this.router.navigate(['/food/mostraComida', this.id]);
+          alert("comida actualizada");
+        }else{
+          alert("comida creada");
         }
       },
       error => {

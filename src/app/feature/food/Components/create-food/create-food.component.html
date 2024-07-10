@@ -27,7 +27,7 @@
             <ul class="list-group">
                 <li *ngFor="let ingredienteSeleccionado of ingredientesSeleccionados; let i = index"
                     class="list-group-item">
-                    {{ingredienteSeleccionado.ingrediente.descripcion}} - {{ingredienteSeleccionado.cantidad}}
+                    {{ingredienteSeleccionado.ingrediente.descripcion}} - {{ingredienteSeleccionado.cantidad}} {{ingredienteSeleccionado.ingrediente.unidad_de_medidas}}
                     <button type="button" class="btn btn-danger btn-sm float-right"
                         (click)="quitarIngrediente(i)">Quitar</button>
                 </li>
