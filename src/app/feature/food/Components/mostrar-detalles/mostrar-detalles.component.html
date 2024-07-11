@@ -1,17 +1,26 @@
-<div class="container mt-4" >
-  <div *ngIf="primerComida">
-    <div>
-      <h3> Almuerzo: {{ primerComida.comidaId.nombre }}</h3>
+<div class="container mt-4">
+  <div *ngIf="primerComida" class="comida-card">
+    <!-- Nombre de la comida en la parte central superior -->
+    <div class="text-center mb-3">
+      <h3> {{ primerComida.comidaId.nombre }}</h3>
     </div>
-      
-      <p>Receta: {{ primerComida.comidaId.receta }}</p>
-      <p>Categoría: {{ primerComida.comidaId.categoria.descripcion }}</p>
+    
+    <!-- Categoría en la parte superior izquierda -->
+    <p class="categoria">Categoría: {{ primerComida.comidaId.categoria.descripcion }}</p>
+    
+    <!-- Ingredientes alineados a la derecha con un título -->
+    <div class="ingredientes">
+      <h5>Ingredientes:</h5>
+      <div *ngFor="let comida of comidas">
+        <h5>{{ comida.ingredienteId.descripcion }} cantidad: {{ comida.cantidad + ' ' + comida.ingredienteId.unidad_de_medidas }}</h5>
+      </div>
+    </div>
+    
+    <!-- Receta debajo del título "Receta" -->
+    <div class="receta">
+      <h5>Receta:</h5>
+      <p>{{ primerComida.comidaId.receta }}</p>
+    </div>
   </div>
-    
-    <h5>Ingredientes :  </h5>
-    <div *ngFor="let comida of comidas ">
-      <h5>{{comida.ingredienteId.descripcion}} cantidad: {{comida.cantidad + " " + comida.ingredienteId.unidad_de_medidas}}</h5>
-    </div>
-    
     <button type="button" class="btn btn-primary" (click)="EditarDetalles(primerComida?.comidaId?.id)">Editar Detalles</button>
 </div>
